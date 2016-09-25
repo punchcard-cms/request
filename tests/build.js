@@ -24,6 +24,22 @@ test('Basic Endpoint', t => {
   });
 });
 
+test('Basic Endpoint - Options', t => {
+  process.env.PUNCHCARD = 'foo';
+
+  const expected = {
+    method: 'GET',
+    url: 'https://punchcard.io/api',
+  };
+
+  return build({
+    endpoint: '/api',
+    punchcard: 'https://punchcard.io',
+  }).then(result => {
+    t.deepEqual(result, expected);
+  });
+});
+
 test('Basic Endpoint, with `sort`', t => {
   process.env.PUNCHCARD = 'https://punchcard.io';
 
