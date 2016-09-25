@@ -1,21 +1,26 @@
 'use strict';
 
-const request = require('request');
+const curry = require('./lib/curry');
 
-/*
- * Promise wrapper for Request
- */
-const req = options => {
-  return new Promise((res, rej) => {
-    request(options, (err, response, body) => {
-      if (!err && response.statusCode === 200) {
-        res(body);
-      }
-      else {
-        rej(err);
-      }
-    });
+const request = endpoints => {
+  let input = endpoints;
+  let single = false;
+
+  if (!Array.isArray(input)) {
+    input = [input];
+    single = true;
+  }
+
+  const get = input.map(curry);
+
+  return Promise.all(get).then(result => {
+    if (single) {
+      return result[0];
+    }
+
+    return result;
   });
 };
 
-module.exports = req;
+
+module.exports = request;
