@@ -33,6 +33,7 @@
       "config/**/*",
       "public/**/*",
       "bower_components/**/*",
+      "lib/wrappers.js",
       "Gulpfile.js",
       "coverage"
     ]
