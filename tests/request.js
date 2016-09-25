@@ -69,7 +69,6 @@ test('Single', t => {
     limit: 10,
     punchcard: 'https://punchcard.io',
   }).then(result => {
-    console.log(result);
     t.deepEqual(result, all);
   }).catch(e => {
     console.log(e.message); // eslint-disable-line no-console
@@ -109,7 +108,6 @@ test('Multiple', t => {
   ];
 
   return request(items).then(result => {
-    console.log(result);
     t.deepEqual(result, [all, one]);
   }).catch(e => {
     console.log(e.message); // eslint-disable-line no-console
