@@ -137,6 +137,54 @@ test('Basic Endpoint, with `per_page`', t => {
   });
 });
 
+test('Basic Endpoint, with `key`', t => {
+  process.env.PUNCHCARD = 'https://punchcard.io';
+
+  const expected = {
+    method: 'GET',
+    url: 'https://punchcard.io/api?key=Hello%20World',
+  };
+
+  return build({
+    endpoint: '/api',
+    key: 'Hello World',
+  }).then(result => {
+    t.deepEqual(result, expected);
+  });
+});
+
+test('Basic Endpoint, with `slug`', t => {
+  process.env.PUNCHCARD = 'https://punchcard.io';
+
+  const expected = {
+    method: 'GET',
+    url: 'https://punchcard.io/api?key_slug=hello-world',
+  };
+
+  return build({
+    endpoint: '/api',
+    slug: 'hello-world', // eslint-disable-line camelcase
+  }).then(result => {
+    t.deepEqual(result, expected);
+  });
+});
+
+test('Basic Endpoint, with `key_slug`', t => {
+  process.env.PUNCHCARD = 'https://punchcard.io';
+
+  const expected = {
+    method: 'GET',
+    url: 'https://punchcard.io/api?key_slug=punchcard-rocks',
+  };
+
+  return build({
+    endpoint: '/api',
+    key_slug: 'punchcard-rocks', // eslint-disable-line camelcase
+  }).then(result => {
+    t.deepEqual(result, expected);
+  });
+});
+
 
 test('Basic Endpoint, with all', t => {
   process.env.PUNCHCARD = 'https://punchcard.io';
