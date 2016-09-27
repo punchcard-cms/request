@@ -47,4 +47,5 @@ All endpoints are options of the `get` parameter. Some endpoints require an addi
 * `dir` `sort_dir` - Sort direction, can be one of `asc` or `desc`. Defaults to `asc`
 * `page` - The page to request (for pagination). Defaults to `1`, starts at 1
 * `limit` `per_page` - The max number of items to return per page (for pagination). Defaults to `30`
-
+* `key` - Content `key` that you would like to filter the request for. Only works with `all` and `type` endpoints
+* `slug` `key_slug` - Content `key_slug` that you would like to filter the request for. Only works with `all` and `type` endpoints

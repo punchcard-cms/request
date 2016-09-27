@@ -8,7 +8,7 @@
     "ava": "ava | tap-diff",
     "ava:watch": "ava --watch | tap-diff",
     "nyc": "nyc --all npm run ava",
-    "lint": "eslint index.js lib && eslint -c ./.eslintrc-ava.yml tests",
+    "lint": "eslint index.js lib tests",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "reparo": "reparo -b master"
