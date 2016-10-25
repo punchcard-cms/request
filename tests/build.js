@@ -185,13 +185,29 @@ test('Basic Endpoint, with `key_slug`', t => {
   });
 });
 
+test('Basic Endpoint, with `follow`', t => {
+  process.env.PUNCHCARD = 'https://punchcard.io';
+
+  const expected = {
+    method: 'GET',
+    url: 'https://punchcard.io/api?follow=true',
+  };
+
+  return build({
+    endpoint: '/api',
+    follow: true,
+  }).then(result => {
+    t.deepEqual(result, expected);
+  });
+});
+
 
 test('Basic Endpoint, with all', t => {
   process.env.PUNCHCARD = 'https://punchcard.io';
 
   const expected = {
     method: 'GET',
-    url: 'https://punchcard.io/api?sort=type&sort_dir=desc&page=3&per_page=5',
+    url: 'https://punchcard.io/api?sort=type&sort_dir=desc&page=3&per_page=5&follow=true',
   };
 
   return build({
@@ -200,6 +216,7 @@ test('Basic Endpoint, with all', t => {
     dir: 'desc',
     page: 3,
     limit: 5,
+    follow: true,
   }).then(result => {
     t.deepEqual(result, expected);
   });
