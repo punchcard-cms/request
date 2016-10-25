@@ -5,8 +5,8 @@
   "scripts": {
     "test": "npm run nyc",
     "pretest": "npm run lint",
-    "ava": "ava | tap-diff",
-    "ava:watch": "ava --watch | tap-diff",
+    "ava": "ava",
+    "ava:watch": "ava --watch",
     "nyc": "nyc --all npm run ava",
     "lint": "eslint index.js lib tests",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -43,8 +43,8 @@
       "tests/*.js",
       "!tests/apis.js"
     ],
-    "failFast": true,
-    "tap": true
+    "failFast": false,
+    "tap": false
   },
   "config": {
     "ghooks": {
